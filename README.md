@@ -1,22 +1,28 @@
 # Suscripto Chile 🇨🇱
 
-MVP móvil para registrar suscripciones, estimar gasto mensual y vigilar fechas de renovación y pruebas gratis.
+Aplicación web móvil para registrar suscripciones, estimar gasto mensual y revisar renovaciones próximas y pruebas gratuitas.
 
-## Funciones incluidas
-- Añadir, editar, pausar y eliminar servicios.
-- Resumen de gasto mensual activo.
-- Resumen de renovaciones de los siguientes 7 días.
-- Etiquetas para pruebas gratuitas.
-- Persistencia local en el navegador.
+## Demo / archivos
+- App: `index.html`
+- Página de oferta: `ventas.html`
+- Privacidad preliminar: `privacidad.html`
+- Manifest Android/PWA: `app.webmanifest`
+- Caché estática básica: `sw.js`
+- Oferta y plan de validación: `PLAN_VENTAS_7_DIAS.md`
+- Guía de publicación sin pago: `PUBLICAR_CLOUDFLARE_PAGES.md`
 
-## Demo
-https://suscripto-cl-crov83-9633.vercel.app/
+## Funciones
+- Añadir, editar, pausar y eliminar suscripciones.
+- Resumen de gasto mensual activo y renovaciones de los siguientes 7 días.
+- Etiquetas para pruebas gratis.
+- Datos locales en el navegador.
+- Exportación/importación JSON para respaldo.
+- Manifest de instalación y service worker para recursos estáticos básicos.
 
-## Importante
-Esta demo no cobra automáticamente, no procesa tarjetas, no envía recordatorios y no sincroniza datos. El cobro recurrente exige backend seguro, una pasarela de pagos, consentimiento informado, webhooks y una forma clara de cancelar. Nunca almacenar datos de tarjetas en el navegador.
+## Publicar gratis
+Sigue los pasos de [PUBLICAR_CLOUDFLARE_PAGES.md](./PUBLICAR_CLOUDFLARE_PAGES.md). La conexión inicial con GitHub requiere autorización desde tu cuenta de Cloudflare; una vez conectada, cada cambio en `main` se puede publicar automáticamente.
 
-## Plan comercial de 7 días
-El objetivo realista de la semana es validar demanda y cerrar las primeras ventas, sin comprar software. La demo puede usarse como muestra en conversaciones comerciales. Antes de cobrar por acceso recurrente, resolver hosting comercial, términos, privacidad y soporte. Para cobrar proyectos o configuración inicial, usar un enlace de pago del proveedor elegido; se aplican comisiones por transacción.
+## Alcance y límites
+Esta es una versión inicial para validar la necesidad del producto. No tiene autenticación, base de datos compartida, sincronización entre dispositivos, recordatorios push, facturación ni pagos/cobros recurrentes. No se deben guardar datos de tarjetas en la página.
 
-## Publicación
-La demo está desplegada en Vercel. Revisa el plan y los límites vigentes antes de usarla como servicio comercial de producción.
+El precio fundador de configuración guiada que aparece en `ventas.html` es una oferta de prueba; el alcance y la fecha de entrega deben acordarse antes de cobrar. El producto no debe describirse como un SaaS con cobro automático ya operativo.
