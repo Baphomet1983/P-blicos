@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827"><meta name="description" content="Controla tus suscripciones y próximos pagos en pesos chilenos.">
+<title>Suscripto — Control de suscripciones</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2c;--panel2:#182238;--line:#29364d;--txt:#f4f7fb;--muted:#9eabc1;--lime:#b8f36b;--blue:#8bb8ff;--red:#ff8e9b;--radius:20px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#17243d 0,transparent 38%),var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1080px;margin:auto;padding:22px 17px 90px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:5px 0 30px}.brand{display:flex;gap:11px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;background:var(--lime);color:#101827;display:grid;place-items:center;font-weight:900;font-size:22px}.brand h1{font-size:20px;letter-spacing:-.5px;margin:0}.brand p{margin:0;color:var(--muted);font-size:12px}.pill{border:1px solid #34425a;color:var(--muted);padding:7px 11px;border-radius:99px;font-size:12px}
+h2{font-size:clamp(26px,5vw,38px);letter-spacing:-1.3px;line-height:1.12;margin:0 0 9px}.intro{color:var(--muted);margin:0 0 23px;max-width:600px}.topline{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}.primary{background:var(--lime);color:#121a22;font-weight:800;padding:12px 17px;border-radius:13px}.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--txt);font-weight:650;padding:10px 14px;border-radius:12px}.quiet{background:transparent;color:var(--muted);padding:7px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:25px 0}.metric{background:linear-gradient(145deg,#172238,#11192b);border:1px solid var(--line);padding:18px;border-radius:var(--radius);min-width:0}.metric .label{color:var(--muted);font-size:12px}.metric strong{display:block;font-size:clamp(20px,3vw,29px);letter-spacing:-.7px;margin-top:5px;overflow-wrap:anywhere}.metric small{display:block;color:var(--muted);margin-top:5px;font-size:12px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:28px 0 13px}.sectionhead h3{font-size:18px;margin:0}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:7px 11px;font-size:12px}.filter.active{background:#26364b;color:var(--txt);border-color:#415775}
+.list{display:grid;gap:10px}.sub{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:15px;border-radius:17px}.appicon{width:45px;height:45px;display:grid;place-items:center;border-radius:14px;background:#27344b;font-size:21px;font-weight:800}.details{min-width:0}.details strong{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:12px;margin-top:2px}.status{display:inline-block;font-size:10px;font-weight:750;letter-spacing:.3px;border-radius:99px;padding:3px 7px;margin-top:7px;background:#243d30;color:var(--lime)}.status.trial{background:#263d5b;color:var(--blue)}.status.paused{background:#3a2b30;color:var(--red)}.amount{text-align:right;font-weight:750;white-space:nowrap}.amount small{display:block;color:var(--muted);font-weight:400;font-size:11px}.subactions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:7px;margin-top:0}.subactions button{background:#1b263b;border:1px solid #2e3a50;color:#dbe5f4;border-radius:9px;padding:7px 10px;font-size:12px}.empty{text-align:center;border:1px dashed #35425a;border-radius:16px;padding:32px 16px;color:var(--muted)}
+.info{margin-top:22px;border:1px solid #3b4a35;background:#18251d;border-radius:16px;padding:16px}.info strong{color:var(--lime)}.info p{color:#b7c6b3;font-size:13px;margin:6px 0 0}.foot{color:#72819a;font-size:11px;text-align:center;margin-top:28px}
+dialog{border:1px solid var(--line);border-radius:22px;background:#111a2d;color:var(--txt);padding:0;width:min(490px,calc(100% - 24px));max-height:90dvh;overflow:auto}dialog::backdrop{background:#030713cc;backdrop-filter:blur(5px)}.modalhead{padding:20px 21px 10px;display:flex;justify-content:space-between;align-items:center}.modalhead h3{margin:0;font-size:20px}.form{padding:8px 21px 21px;display:grid;gap:13px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:12px 13px;background:#0c1323;color:var(--txt);border:1px solid #334159;border-radius:11px;outline:none}.field input:focus,.field select:focus{border-color:var(--lime)}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}.notice{font-size:12px;color:var(--muted);line-height:1.5}
+@media(max-width:540px){.wrap{padding:16px 13px 75px}.metrics{gap:7px}.metric{padding:12px 10px;border-radius:15px}.metric .label{font-size:11px}.metric small{font-size:10px}.sub{padding:12px;gap:10px}.appicon{width:40px;height:40px}.amount{font-size:13px}.topline{align-items:start}.primary{padding:11px 12px}.pill{display:none}.sectionhead{align-items:flex-start;flex-direction:column}.foot{text-align:left}}
+</style>
+</head>
+<body><main class="wrap">
+<header><div class="brand"><div class="logo">S</div><div><h1>suscripto<span style="color:var(--lime)">.</span></h1><p>Tu dinero, bajo control</p></div></div><span class="pill">HECHO PARA CHILE · CLP</span></header>
+<div class="topline"><div><h2>Tus suscripciones.<br><span style="color:var(--lime)">Sin sorpresas.</span></h2><p class="intro">Controla tus servicios, pruebas gratis y próximas renovaciones en un solo lugar.</p></div><button class="primary" id="add">＋ Añadir servicio</button></div>
+<section class="metrics"><div class="metric"><span class="label">Gasto mensual estimado</span><strong id="monthly">$0</strong><small>Suscripciones activas</small></div><div class="metric"><span class="label">Próximos 7 días</span><strong id="next">$0</strong><small id="nextnote">Pagos por vencer</small></div><div class="metric"><span class="label">Pruebas gratuitas</span><strong id="trials">0</strong><small>Revisa antes de que cobren</small></div></section>
+<div class="sectionhead"><h3>Mis servicios <span id="count" style="color:var(--muted);font-weight:500">0</span></h3><div class="filters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="trial">Prueba gratis</button><button class="filter" data-filter="active">Activos</button></div></div>
+<div class="list" id="list"></div>
+<section class="info"><strong>🔔 Que una prueba gratis no te pille por sorpresa</strong><p>Registra la fecha de renovación y el precio. Esta versión guarda los datos en este dispositivo; no envía notificaciones ni realiza cobros bancarios todavía.</p></section>
+<p class="foot">Suscripto · Prototipo funcional · Tus datos se guardan localmente en este navegador.</p>
+</main>
+<dialog id="modal"><div class="modalhead"><h3 id="formtitle">Añadir suscripción</h3><button class="quiet" id="close" aria-label="Cerrar">✕</button></div>
+<form class="form" id="subform">
+<input type="hidden" id="editid">
+<div class="field"><label for="name">Nombre del servicio *</label><input id="name" required maxlength="60" placeholder="Ej. Netflix, Spotify, gimnasio"></div>
+<div class="twocol"><div class="field"><label for="price">Precio mensual (CLP) *</label><input id="price" required type="number" min="0" max="100000000" step="1" placeholder="7990"></div><div class="field"><label for="day">Día de renovación *</label><input id="day" required type="date"></div></div>
+<div class="twocol"><div class="field"><label for="status">Estado</label><select id="status"><option value="active">Activa</option><option value="trial">Prueba gratis</option><option value="paused">Pausada</option></select></div><div class="field"><label for="category">Categoría</label><select id="category"><option>Entretenimiento</option><option>Música</option><option>Software</option><option>Almacenamiento</option><option>Gimnasio</option><option>Educación</option><option>Otra</option></select></div></div>
+<div class="field"><label for="note">Nota (opcional)</label><input id="note" maxlength="120" placeholder="Ej. cancelar antes del día 23"></div>
+<p class="notice">Para una prueba gratis, selecciona “Prueba gratis” e ingresa la fecha en que termina. No se realizará ningún cargo automático desde esta app.</p>
+<div class="actions"><button class="secondary" type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar servicio</button></div>
+</form></dialog>
+<script>
+(()=> {
+const $=id=>document.getElementById(id), money=n=>new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(n||0);
+const icons={'Entretenimiento':'🎬','Música':'🎧','Software':'💻','Almacenamiento':'☁️','Gimnasio':'🏋️','Educación':'📚','Otra':'🔁'};
+const today=new Date();today.setHours(0,0,0,0);
+const iso=d=>{const x=new Date(d);return new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,10)};
+const plus=(d,n)=>{let x=new Date(d);x.setDate(x.getDate()+n);return x};
+const days=(a,b)=>Math.ceil((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000);
+let items=[];try{items=JSON.parse(localStorage.getItem('suscripto.subs.v1')||'[]')}catch(e){items=[]}
+let filter='all';
+function save(){try{localStorage.setItem('suscripto.subs.v1',JSON.stringify(items))}catch(e){alert('No se pudo guardar en este navegador. Revisa el espacio disponible.')}render()}
+function render(){
+ const active=items.filter(x=>x.status==='active'), trials=items.filter(x=>x.status==='trial');
+ $('monthly').textContent=money(active.reduce((s,x)=>s+Number(x.price),0));
+ const d7=plus(today,7);const upcoming=items.filter(x=>x.status!=='paused'&&x.day>=iso(today)&&x.day<=iso(d7));$('next').textContent=money(upcoming.reduce((s,x)=>s+Number(x.price),0));$('nextnote').textContent=upcoming.length+' renovación(es) dentro de 7 días';$('trials').textContent=trials.length;$('count').textContent='('+items.length+')';
+ const visible=items.filter(x=>filter==='all'||x.status===filter).sort((a,b)=>a.day.localeCompare(b.day));
+ if(!visible.length){$('list').innerHTML='<div class="empty"><div style="font-size:27px;margin-bottom:6px">＋</div><strong style="color:var(--txt)">Aún no tienes servicios aquí</strong><div style="margin:7px 0 14px">Agrega una suscripción para empezar a controlar tus gastos.</div><button class="secondary" id="emptyadd">Añadir mi primer servicio</button></div>';if($('emptyadd'))$('emptyadd').onclick=openNew;return}
+ $('list').innerHTML=visible.map(x=>{const left=days(iso(today),x.day);const state=x.status==='trial'?'Prueba gratis':x.status==='paused'?'Pausada':'Activa';let reminder=x.day<iso(today)?'Fecha pasada':left===0?'Renueva hoy':left===1?'Renueva mañana':'Renueva en '+left+' días';return '<article class="sub"><div class="appicon">'+(icons[x.category]||'🔁')+'</div><div class="details"><strong>'+esc(x.name)+'</strong><div class="meta">'+esc(x.category)+' · '+esc(reminder)+(x.note?' · '+esc(x.note):'')+'</div><span class="status '+x.status+'">'+state+'</span></div><div class="amount">'+money(Number(x.price))+'<small>/ mes</small></div><div class="subactions"><button data-edit="'+x.id+'">Editar</button><button data-toggle="'+x.id+'">'+(x.status==='paused'?'Reactivar':'Pausar')+'</button><button data-del="'+x.id+'">Eliminar</button></div></article>'}).join('');
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openNew(){ $('subform').reset();$('editid').value='';$('formtitle').textContent='Añadir suscripción';$('day').value=iso(plus(today,7));$('modal').showModal()}
+function edit(id){const x=items.find(i=>i.id===id);if(!x)return; $('editid').value=id;$('name').value=x.name;$('price').value=x.price;$('day').value=x.day;$('status').value=x.status;$('category').value=x.category;$('note').value=x.note||'';$('formtitle').textContent='Editar suscripción';$('modal').showModal()}
+$('add').onclick=openNew;$('close').onclick=()=>$('modal').close();$('cancel').onclick=()=>$('modal').close();
+$('subform').addEventListener('submit',e=>{e.preventDefault();const id=$('editid').value;const x={id:id||String(Date.now())+'-'+Math.random().toString(16).slice(2),name:$('name').value.trim(),price:Number($('price').value),day:$('day').value,status:$('status').value,category:$('category').value,note:$('note').value.trim()};if(!x.name||!x.day||!Number.isFinite(x.price)||x.price<0)return;if(id)items=items.map(i=>i.id===id?x:i);else items.push(x);$('modal').close();save()});
+$('list').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.edit||b.dataset.toggle||b.dataset.del;if(!id)return;if(b.dataset.edit)edit(id);else if(b.dataset.toggle){items=items.map(x=>x.id===id?{...x,status:x.status==='paused'?'active':'paused'}:x);save()}else if(b.dataset.del&&confirm('¿Eliminar esta suscripción?')){items=items.filter(x=>x.id!==id);save()}});
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(n=>n.classList.toggle('active',n===b));render()});
+render();
+})();
+</script></body></html>
