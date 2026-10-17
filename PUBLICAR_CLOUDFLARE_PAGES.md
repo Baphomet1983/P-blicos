@@ -13,7 +13,7 @@ Cloudflare Pages permite publicar un sitio HTML estático desde GitHub. El repos
    - **Production branch:** main
    - **Framework preset:** None
    - **Build command:** dejar en blanco (sin build)
-   - **Build output directory:** /
+   - **Build output directory:** . (la raíz del repositorio)
 7. Pulsa **Save and Deploy**.
 8. Abre el dominio `*.pages.dev` que muestre el panel.
 
