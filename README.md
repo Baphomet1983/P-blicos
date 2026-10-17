@@ -9,6 +9,7 @@ Aplicación web móvil para registrar suscripciones, estimar gasto mensual y rev
 - Manifest Android/PWA: `app.webmanifest`
 - Caché estática básica: `sw.js`
 - Oferta y plan de validación: `PLAN_VENTAS_7_DIAS.md`
+- Instrucciones de cobros y prueba de 7 días: `GUIA_COBROS_MERCADOPAGO.md`
 - Guía de publicación sin pago: `PUBLICAR_CLOUDFLARE_PAGES.md`
 
 ## Funciones
